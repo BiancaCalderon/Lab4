@@ -60,7 +60,7 @@ fun RecipeListScreen() {
             TextField(
                 value = itemName,
                 onValueChange = { itemName = it },
-                label = { Text("Nombre del elemento") }
+                label = { Text("Receta") }
             )
             TextField(
                 value = imageUrl,
@@ -79,13 +79,13 @@ fun RecipeListScreen() {
                 Text("Agregar")
             }
         }
-
+//LAzy Column: Reusa elementos/celdas y bota elementos repetidos en vez de Column
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp),
             contentPadding = PaddingValues(16.dp)
         ) {
-            items(itemList) { recipeItem ->
+            items(itemList) { recipeItem -> //itera por cada elemento del itemlist
                 RecipeCard(recipeItem)
             }
         }
@@ -98,6 +98,7 @@ fun RecipeCard(recipeItem: RecipeItem) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+        //verticalArrangement = Arrangement.Center) { this: ColumnSCope}
     ) {
         Image(
             painter = rememberImagePainter(recipeItem.imageUrl),
